@@ -58,13 +58,7 @@
                 <span class="hidden sm:inline">Tüm Türkiye'ye Hızlı Kargo</span>
             </div>
             <div class="flex items-center gap-4">
-                <a href="/vendor/login" class="hover:text-amber-400 transition flex items-center gap-1">
-                    <span>🏪</span> Satıcı Girişi
-                </a>
-                <span class="text-slate-600">|</span>
-                <a href="/admin/login" class="hover:text-blue-400 transition flex items-center gap-1">
-                    <span>👑</span> Yönetici Girişi
-                </a>
+                <!-- Satıcı ve Yönetici linkleri kaldırıldı -->
             </div>
         </div>
     </div>
@@ -91,7 +85,7 @@
 
                 <!-- Orta OEM & Parça Arama Çubuğu -->
                 <div class="flex-1 max-w-2xl hidden md:block">
-                    <form action="{{ route('products.search') }}" method="GET" class="relative">
+                    <form action="{{ route('vitrin.arama') }}" method="GET" class="relative">
                         <div class="relative flex items-center">
                             <input 
                                 type="text" 
@@ -116,22 +110,21 @@
                 </div>
 
                 <!-- Sağ Menü Butonları -->
-                <div class="flex items-center gap-3">
-                    @livewire('cart-counter')
-
-                    <a href="/admin" class="hidden sm:flex items-center gap-2 text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/60 px-3.5 py-2 rounded-xl transition">
-                        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <span>Yönetici</span>
+                <div class="flex items-center space-x-4">
+                    <a href="{{ route('sepetim') }}" class="relative text-slate-300 hover:text-amber-500 transition flex items-center gap-1 mr-2">
+                        <div class="relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span class="absolute -top-2 -right-3 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+                        </div>
+                        <span class="text-sm font-medium">Sepetim</span>
                     </a>
-
-                    <a href="/vendor" class="flex items-center gap-2 text-xs font-semibold bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 px-3.5 py-2 rounded-xl transition shadow-lg shadow-amber-500/20">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                        </svg>
-                        <span>Satıcı</span>
+                    <a href="{{ route('login') }}" class="text-slate-200 hover:text-white font-medium text-sm transition">
+                        Giriş Yap
+                    </a>
+                    <a href="{{ route('register') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-sm transition">
+                        Kaydol
                     </a>
                 </div>
             </div>
@@ -144,55 +137,7 @@
     </main>
 
     <!-- Alt Bilgi (Footer) -->
-    <footer class="bg-[#070a12] border-t border-slate-800/80 text-slate-400 py-12 mt-16 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <span class="text-xl font-black text-white flex items-center gap-1 mb-3">
-                        OTO<span class="text-amber-400">MARKET</span>
-                    </span>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                        Türkiye'nin lider otomotiv yedek parça ve aksesuar pazaryeri. Birebir araç uyumluluk garantisi ve 100.000+ OEM referansı.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-white font-semibold mb-3 text-sm">Popüler Kategoriler</h4>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="#" class="hover:text-white transition">Fren Sistemi & Balatalar</a></li>
-                        <li><a href="#" class="hover:text-white transition">Filtre Setleri (Yağ, Hava, Polen)</a></li>
-                        <li><a href="#" class="hover:text-white transition">Debriyaj & Şanzıman</a></li>
-                        <li><a href="#" class="hover:text-white transition">Süspansiyon & Amortisör</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-semibold mb-3 text-sm">Pazaryeri & Satıcılar</h4>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="/vendor/login" class="hover:text-white transition">Mağaza Aç / Satıcı Ol</a></li>
-                        <li><a href="/vendor" class="hover:text-white transition">Satıcı Yönetim Portalı</a></li>
-                        <li><a href="#" class="hover:text-white transition">Komisyon Oranları & Şartlar</a></li>
-                        <li><a href="#" class="hover:text-white transition">Kargo Entegrasyonları</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-semibold mb-3 text-sm">Güvenli Alışveriş</h4>
-                    <div class="bg-slate-900/80 border border-slate-800 p-3.5 rounded-xl text-xs space-y-2">
-                        <div class="flex items-center gap-2 text-emerald-400 font-medium">
-                            <span>🛡️</span> 256-Bit SSL Koruması
-                        </div>
-                        <div class="flex items-center gap-2 text-blue-400 font-medium">
-                            <span>🚗</span> Birebir Fitment Garantisi
-                        </div>
-                        <div class="flex items-center gap-2 text-amber-400 font-medium">
-                            <span>📦</span> Hızlı Teslimat & Kolay İade
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-slate-800/60 pt-6 text-center text-xs text-slate-500">
-                &copy; {{ date('Y') }} OtoMarket Pazaryeri Platformu. Tüm hakları saklıdır. Laravel & Livewire v3 ile güçlendirilmiştir.
-            </div>
-        </div>
-    </footer>
+    <x-footer />
 
     @livewireScripts
 </body>

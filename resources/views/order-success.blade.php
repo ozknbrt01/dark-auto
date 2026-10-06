@@ -20,7 +20,7 @@
             Teşekkürler, {{ $order->customer_name }}!
         </h1>
 
-        <p class="text-sm text-slate-300 max-w-md mx-auto mb-6">
+        <p class="text-sm text-slate-300 max-w-2xl mx-auto mb-6">
             Siparişiniz alındı ve ilgili satıcılarımıza iletildi. Parçalarınız en kısa sürede kargoya verilecektir.
         </p>
 

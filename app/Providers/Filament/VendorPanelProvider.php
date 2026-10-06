@@ -26,12 +26,13 @@ class VendorPanelProvider extends PanelProvider
         return $panel
             ->id('vendor')
             ->path('vendor')
-            ->brandName('Satıcı Yönetim Portalı')
-            ->login()
+            ->brandName('Mağaza Girişi')
+            ->login(\App\Filament\Vendor\Pages\Auth\VendorLogin::class)
             ->tenant(Vendor::class, slugAttribute: 'slug')
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => Color::Amber,
             ])
+            ->defaultThemeMode(\Filament\Enums\ThemeMode::Dark)
             ->discoverResources(in: app_path('Filament/Vendor/Resources'), for: 'App\\Filament\\Vendor\\Resources')
             ->discoverPages(in: app_path('Filament/Vendor/Pages'), for: 'App\\Filament\\Vendor\\Pages')
             ->pages([
